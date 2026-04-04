@@ -29,13 +29,14 @@ export default function AddTrip() {
         endDate: form.get("endDate") as string,
         notes: form.get("notes") as string,
         imageUrl,
-        details: info.extract,
-        highlights,
+        details: info?.extract ?? "No hay información disponible",
+        highlights: (highlights ?? []),
       }),
     );
 
     navigate("/");
   }
+
   return (
     <div className="p-6 max-w-3xl mx-auto">
       <h1 className="text-3xl font-bold mb-6">Añadir Viaje</h1>
@@ -63,7 +64,6 @@ export default function AddTrip() {
           className="border p-2 rounded"
           placeholder="Notas"
         />
-
         <button className="bg-blue-600 text-white p-3 rounded shadow hover:bg-blue-700">
           Guardar
         </button>
